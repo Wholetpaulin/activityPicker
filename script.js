@@ -1,14 +1,18 @@
 $(document).ready(function() { 
 
-  // if(localstorage){
+  var actArray = JSON.parse(localStorage.getItem("actArray"));
+  if(localStorage.getItem("actArray")){
+    console.log("actArray was ready");
 
-  // }
-  // else{
-  //   build array with default values
-  // }
+  }
+  else{
+    console.log("actArray was not ready");
+    var actArray = ["Go for a run", "Call a family member", "Clean the house", "Click the pencil to edit the default tasks", "Click the trash bin to delete a task", "Click the plus + to add a task"];
+    localStorage.setItem("actArray", JSON.stringify(actArray));
+  }
 
   //this will eventually be replaced with a function that reads from local storage
-  var actArray = ["Korean Practice", "Sketching practice", "Meditation", "Walk", "Call roulette people", "Digital design practice"];
+  //
   var runAgain = true;
 
   buildList();        //dynamically creates the list based on actArray
@@ -23,6 +27,7 @@ $(document).ready(function() {
   $(document).on("click", ".update", function(event) {
     var input = document.getElementById('booboo');    //selects the input field
     actArray[this.value] = input.value;         //reset the string in act array to what's in the appropiate input field
+    localStorage.setItem("actArray", JSON.stringify(actArray));
     var listNum = $('[data-place="'+this.value+'"]');
     listNum.html("<span>"+ actArray[this.value] + "</span>");
     listNum.append("<button class = 'btn-sm delete' data-attribute = " + this.value + "><icon class = 'fa fa-trash'></icon></button>");
@@ -32,6 +37,7 @@ $(document).ready(function() {
   $(document).on("click", ".delete", function(event) {    //What's the advantage of doing it the other way?
     var num = $(this).attr("data-attribute");             //selects out which delete button it is in the list
     actArray.splice(num, 1);//remove that particular element from the array 
+    localStorage.setItem("actArray", JSON.stringify(actArray)); //save the new array to local storage
     var listNum = document.getElementById('listy');
     listNum.remove();
     var numDum = document.getElementById('listDiv');

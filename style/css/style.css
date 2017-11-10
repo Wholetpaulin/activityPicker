@@ -9,7 +9,7 @@
 
 #activity{
   	overflow-y: scroll;
-  	height: 52vh;
+  	height: 51vh;
 }
 
 ::-webkit-scrollbar { 
@@ -33,7 +33,6 @@ span{
 	margin: 0 2px 0 2px;
 }
 
-
 .delete{
 	float: right;
 	box-shadow: none;
@@ -45,6 +44,11 @@ span{
     border: 2px solid;
     border-radius: 25px;
     outline:0;
+    margin: 4px 0 4px 0;
+}
+
+.pick{
+    margin: 6px 0 6px 0;
 }
 
 .btn-lg{
@@ -52,3 +56,19 @@ span{
 	border-color: none;
 } 
 
+/*This size is for tablets*/
+@media screen and (max-height: 400px) {
+ /* The body's bg color will be #333 */
+	#activity{
+	  	overflow-y: scroll;
+	  	height: 40vh;
+	}
+	.jumbotron{
+	    padding-top: 0.5%;
+	    padding-bottom: 0.5%;
+	}
+
+	.circle{
+	    margin: 2px 0 2px 0;
+	}
+}
